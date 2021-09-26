@@ -1,0 +1,13 @@
+Mi impresion inicial del problema es que es un problema de como dividir un grafo en secciones que no tienen conexxiones.
+Siendo en este caso las conexxiones las secciones del grafo donde
+El objetivo es dividir el grafo en secciones que sena lo menos pesadas posibles, siendo el peso en este caso el peso
+del vertice mas pesado.
+
+Para tratar de resolver el problema decidi empezar tratando de minimizar la cantidad de lavados necesarios. Para esto
+decidi juntar las secciones del grafo que son completas, es decir grupos de prendas que son todas incompatibles entre
+ellas. El siguiente paso es ir llenando la minima cantidad de lavados con las prendas trantando de minimizar el costo
+de agregar las prendas y el futuro costo de otras prendas. A este fin tengo un algoritmo que recorre los lavados
+buscando el lugar donde menos agranda el lavado la prenda.
+
+Para tratar de mejorar el resultado, tomo la mejor solucion de multiples soluciones que surgend de los grafos completos
+mas grandes.
