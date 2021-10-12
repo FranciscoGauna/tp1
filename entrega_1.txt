@@ -9,5 +9,5 @@ ellas. El siguiente paso es ir llenando la minima cantidad de lavados con las pr
 de agregar las prendas y el futuro costo de otras prendas. A este fin tengo un algoritmo que recorre los lavados
 buscando el lugar donde menos agranda el lavado la prenda.
 
-Para tratar de mejorar el resultado, tomo la mejor solucion de multiples soluciones que surgend de los grafos completos
+Para tratar de mejorar el resultado, tomo la mejor solucion de multiples soluciones que surgen de los grafos completos
 mas grandes.
