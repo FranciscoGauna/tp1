@@ -1,5 +1,5 @@
 Mi impresion inicial del problema es que es un problema de como dividir un grafo en secciones que no tienen conexxiones.
-Siendo en este caso las conexxiones las secciones del grafo donde
+Siendo en este caso las conexxiones las secciones del grafo donde no se pueden lavar jnuntos.
 El objetivo es dividir el grafo en secciones que sena lo menos pesadas posibles, siendo el peso en este caso el peso
 del vertice mas pesado.
 
