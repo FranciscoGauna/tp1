@@ -56,6 +56,7 @@ for line in file:
         graph[int(line.split(' ')[1])].weight = int(line.split(' ')[2])
     if line[0] == 'e':
         graph[int(line.split(' ')[1])].add_edge(graph[int(line.split(' ')[2])])
+        graph[int(line.split(' ')[2])].add_edge(graph[int(line.split(' ')[1])])
 
 completes = []
 for i in graph:
