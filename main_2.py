@@ -73,15 +73,31 @@ for complete in completes:
     complete.sort(key=lambda x: x.weight, reverse=True)
 completes.sort(key=len, reverse=True)
 
-
 solutions = []
+completes_longest = []
 i = 0
 current_solution_size = len(completes[i])
 best_solution_size = current_solution_size
-while current_solution_size >= best_solution_size:
+while current_solution_size >= best_solution_size and i < len(completes):
+    completes_longest.append([item for item in completes[i]])
     solutions.append([Bucket(item) for item in completes[i]])
     i += 1
     current_solution_size = len(completes[i])
+
+for complete in completes_longest:
+    complete.sort(key=lambda x: x.weight, reverse=True)
+    complete.sort(key=lambda x: len(x.edges), reverse=True)
+completes_longest.sort(key=lambda x: sum([y.weight for y in x]), reverse=True)
+completes_longest.sort(key=lambda x: sum([len(y.edges) for y in x]), reverse=True)
+completes_add = []
+for complete in completes_longest:
+    completes_add.extend(complete)
+already_added = {}
+add_list = []
+for vertex in completes_add:
+    if vertex not in already_added:
+        already_added[vertex] = True
+        add_list.append(vertex)
 
 
 def add_to_solution(sol: list, new_item: Vertex):
@@ -95,7 +111,7 @@ def add_to_solution(sol: list, new_item: Vertex):
         index = center
         while index < len(sol) and not sol[index].can_add(new_item):
             index += 1
-    if not sol[index-1].add_item(new_item):
+    if index >= len(sol) or not sol[index].add_item(new_item):
         sol.append(Bucket(new_item))
 
 
@@ -106,7 +122,15 @@ def calculate_solution(sol):
     return total
 
 
+for solution in solutions:
+    for x in add_list:
+        if all(x not in buc for buc in solution):
+            add_to_solution(solution, x)
+            solution.sort(key=lambda x: len(x.items), reverse=True)
+            solution.sort(key=lambda x: x.weight, reverse=True)
+
 elements_to_add = [x for k, x in graph.items()]
+elements_to_add.sort(key=lambda x: x.weight, reverse=True)
 elements_to_add.sort(key=lambda x: len(x.edges), reverse=True)
 for solution in solutions:
     for x in elements_to_add:
