@@ -82,7 +82,7 @@ while i < len(completes):
     completes_longest.append([item for item in completes[i]])
     solutions.append([Bucket(item) for item in completes[i]])
     i += 1
-    
+
 for complete in completes_longest:
     complete.sort(key=lambda x: x.weight, reverse=True)
     complete.sort(key=lambda x: len(x.edges), reverse=True)
